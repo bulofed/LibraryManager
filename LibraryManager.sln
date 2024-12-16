@@ -1,10 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManager.App", "LibraryManager.App\LibraryManager.App.csproj", "{A987BA31-4580-47D6-B239-8304EF85448C}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryManager.App", "LibraryManager.App\LibraryManager.App.csproj", "{A987BA31-4580-47D6-B239-8304EF85448C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessObjects", "BusinessObjects\BusinessObjects.csproj", "{4E931C29-B174-4C71-8B76-B45DF0C74345}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{688CD1F8-F53F-4F99-8373-E8A41AD7DC30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{27273921-CB79-43F8-8C24-75ADD111B087}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +29,15 @@ Global
 		{688CD1F8-F53F-4F99-8373-E8A41AD7DC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{688CD1F8-F53F-4F99-8373-E8A41AD7DC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{688CD1F8-F53F-4F99-8373-E8A41AD7DC30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27273921-CB79-43F8-8C24-75ADD111B087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27273921-CB79-43F8-8C24-75ADD111B087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27273921-CB79-43F8-8C24-75ADD111B087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27273921-CB79-43F8-8C24-75ADD111B087}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C6539C92-61C0-41C9-8B85-D8DB016F526F}
 	EndGlobalSection
 EndGlobal
