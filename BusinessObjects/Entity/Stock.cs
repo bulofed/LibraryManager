@@ -1,6 +1,6 @@
 namespace BusinessObjects.Entity
 {
-    public abstract class Stock : IEntity
+    public class Stock : IEntity
     {
         public int IdLibrary { get; set; }
         public int IdBook { get; set; }

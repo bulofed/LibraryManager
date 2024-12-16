@@ -1,11 +1,11 @@
 namespace BusinessObjects.Entity
 {
-    public abstract class Author : IEntity
+    public class Author : IEntity
     {
         public int Id { get; set; }
-        public required string FirstName { get; set; }
-        public required string LastName { get; set; }
+        public required string FirstName { get; init; }
+        public required string LastName { get; init; }
 
-        public required IEnumerable<Book> Books { get; set; }
+        public IEnumerable<Book>? Books { get; set; }
     }
 }
