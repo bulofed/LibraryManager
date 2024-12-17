@@ -1,6 +1,7 @@
 ﻿using BusinessObjects.Entity;
 using BusinessObjects.Enum;
 using DataAccessLayer.Repository;
+using Services.Services;
 
 namespace LibraryManager.App
 {
@@ -53,6 +54,8 @@ namespace LibraryManager.App
             {
                 Console.WriteLine($"- {book.Name} par {book.Author.FirstName} {book.Author.LastName}");
             }
+            CatalogManager test = new CatalogManager(bookRepo);
+            Console.WriteLine(test.GetCatalog());
         }
     }
 }
