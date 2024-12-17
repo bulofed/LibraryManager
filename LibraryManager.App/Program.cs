@@ -1,6 +1,5 @@
 ﻿using BusinessObjects.Entity;
 using DataAccessLayer.Repository;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -8,7 +7,7 @@ namespace LibraryManager.App
 {
     public static class Program
     {
-        private static IHost CreateHostBuilder(IConfigurationBuilder configuration)
+        private static IHost CreateHostBuilder()
         {
             return Host.CreateDefaultBuilder()
                 .ConfigureServices(services =>
@@ -19,8 +18,7 @@ namespace LibraryManager.App
         }
         public static void Main(string[] args)
         {
-            var configuration = new ConfigurationBuilder();
-            var host = CreateHostBuilder(configuration);
+            var host = CreateHostBuilder();
             var bookRepository = host.Services.GetRequiredService<IGenericRepository<Book>>();
             var books = bookRepository.GetAll();
 
