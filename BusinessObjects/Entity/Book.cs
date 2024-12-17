@@ -9,6 +9,5 @@ namespace BusinessObjects.Entity
         public int Pages { get; set; }
         public TypeLivre Type { get; init; }
         public int Rate { get; set; }
-        public Author? Author { get; init; }
     }
 }
