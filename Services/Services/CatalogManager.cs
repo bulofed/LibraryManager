@@ -6,8 +6,6 @@ namespace Services.Services;
 
 public class CatalogManager(BookRepository bookRepository)
 {
-
-
     public IEnumerable<Book> GetCatalog()
     {
         return bookRepository.GetAll();

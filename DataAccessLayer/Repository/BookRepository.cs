@@ -1,3 +1,4 @@
+using System.Collections;
 using BusinessObjects.Entity;
 using BusinessObjects.Enum;
 
@@ -31,7 +32,7 @@ public class BookRepository : IGenericRepository<Book>
         return _books.First(book => book.Id == id);
     }
     
-    public IEnumerable<Book> GetByType(string type)
+    public IEnumerable GetByType(string type)
     {
         return _books.Where(b => b.Type.ToString() == type);
     }
