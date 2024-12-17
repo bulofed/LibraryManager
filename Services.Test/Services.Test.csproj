@@ -1,13 +1,31 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <UserSecretsId>dotnet-Services.Test-7a3e7d01-07e8-40bf-89b0-da73e2a58c5b</UserSecretsId>
+        <Nullable>enable</Nullable>
+
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+        <RootNamespace>CatalogManagerTest</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1"/>
+        <PackageReference Include="coverlet.collector" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
+        <PackageReference Include="Moq" Version="4.20.72" />
+        <PackageReference Include="xunit" Version="2.5.3"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3"/>
     </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="Xunit"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BusinessObjects\BusinessObjects.csproj" />
+      <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+      <ProjectReference Include="..\Services\Services.csproj" />
+    </ItemGroup>
+
 </Project>

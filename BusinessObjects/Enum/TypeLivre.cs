@@ -3,6 +3,8 @@ namespace BusinessObjects.Enum
     public enum TypeLivre
     {
         Aventure,
-        Enseignement
+        Enseignement,
+        Roman,
+        Essai
     }
 }
