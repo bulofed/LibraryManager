@@ -11,7 +11,7 @@ namespace DataAccessLayer.Repository
 
         public Stock Get(int idLibrary, int idBook)
         {
-            return stocks.FirstOrDefault(s => s.IdLibrary == idLibrary && s.IdBook == idBook) ?? throw new InvalidOperationException();
+            return stocks.First(s => s.IdLibrary == idLibrary && s.IdBook == idBook);
         }
     }
 }

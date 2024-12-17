@@ -1,17 +1,23 @@
 using BusinessObjects.Entity;
 
-namespace DataAccessLayer.Repository
-{
-    public class AuthorRepository(List<Author> authors)
-    {
-        public IEnumerable<Author> GetAll()
-        {
-            return authors;
-        }
+namespace DataAccessLayer.Repository;
 
-        public Author Get(int id)
+public class AuthorRepository : IGenericRepository<Author>
+{
+    private readonly List<Author> _authors =
+    [
+        new Author
         {
-            return authors.FirstOrDefault(a => a.Id == id) ?? throw new InvalidOperationException();
+            Id = 1, FirstName = "Alexandre", LastName = "Dumas",
         }
+    ];
+    public IEnumerable<Author> GetAll()
+    {
+        return _authors;
+    }
+
+    public Author Get(int id)
+    {
+        return _authors.First(a => a.Id == id);
     }
 }

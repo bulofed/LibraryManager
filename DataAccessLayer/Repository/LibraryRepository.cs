@@ -11,7 +11,7 @@ namespace DataAccessLayer.Repository
 
         public Library Get(int id)
         {
-            return libraries.FirstOrDefault(l => l.Id == id) ?? throw new InvalidOperationException();
+            return libraries.First(l => l.Id == id);
         }
     }
 }
