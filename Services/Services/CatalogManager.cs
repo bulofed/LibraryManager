@@ -1,20 +1,32 @@
 ﻿using BusinessObjects.Entity;
+using BusinessObjects.Enum;
+using DataAccessLayer.Repository;
 
-namespace Services.Services
+namespace Services.Services;
+
+public class CatalogManager(BookRepository bookRepository)
 {
-    public class CatalogManager
+
+
+    public IEnumerable<Book> GetCatalog()
     {
-        public void GetCatalog()
-        {
+        return bookRepository.GetAll();
+    }
 
+    public IEnumerable<Book> GetCatalog(TypeLivre type)
+    {
+        return bookRepository.GetAll().Where(book => book.Type == type);
+    }
+
+    public Book? FindBook(int id)
+    {
+        try
+        {
+            return bookRepository.Get(id);
         }
-        public void GetCatalog(Type type)
+        catch (InvalidOperationException)
         {
-
-        }
-        public void FindBook(int id)
-        {
-
+            return null;
         }
     }
 }
