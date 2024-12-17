@@ -24,21 +24,21 @@ namespace LibraryManager.App
                         "library.db");
                     services.AddDbContext<LibraryContext>(options =>
                         options.UseSqlite($"Data Source={databasePath}"));
-                    services.AddTransient<IGenericRepository<Book>, BookRepository>();
+                    services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
                 })
                 .Build();
         }
-        public static void Main(string[] args)
+
+        public static void Main()
         {
             var host = CreateHostBuilder();
             var bookRepository = host.Services.GetRequiredService<IGenericRepository<Book>>();
-            var books = bookRepository.GetAll();
 
+            var books = bookRepository.GetAll();
             foreach (var book in books)
             {
                 Console.WriteLine(book.Name);
             }
-
         }
     }
 }
