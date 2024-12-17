@@ -5,6 +5,6 @@ namespace BusinessObjects.Enum
         Aventure,
         Enseignement,
         Roman,
-        Essai
+        Essai,
     }
 }
