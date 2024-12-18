@@ -1,4 +1,5 @@
 using BusinessObjects;
+using BusinessObjects.Enum;
 using DataAccessLayer.Contexts;
 using Microsoft.EntityFrameworkCore;
 

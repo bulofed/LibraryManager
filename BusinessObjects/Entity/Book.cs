@@ -6,8 +6,8 @@ namespace BusinessObjects.Entity
     {
         public int Id { get; set; }
         public required string Name { get; init; }
-        public int Pages { get; set; }
+        public int Pages { get; init; }
         public TypeLivre Type { get; init; }
-        public int Rate { get; set; }
+        public int Rate { get; init; }
     }
 }

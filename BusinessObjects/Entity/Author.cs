@@ -6,6 +6,6 @@ namespace BusinessObjects.Entity
         public required string FirstName { get; init; }
         public required string LastName { get; init; }
 
-        public IEnumerable<Book>? Books { get; set; }
+        public IEnumerable<Book>? Books { get; init; }
     }
 }
