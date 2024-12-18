@@ -1,5 +1,4 @@
 using BusinessObjects;
-using BusinessObjects.Enum;
 using DataAccessLayer.Contexts;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,17 +14,21 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class, IEnti
         _context = context ?? throw new ArgumentNullException(nameof(context));
         _dbSet = _context.Set<T>();
     }
-
+    
     public IEnumerable<T> GetAll()
     {
         return _dbSet.AsNoTracking().ToList();
     }
-
+    
     public T Get(int id)
     {
         return _dbSet.Find(id) ?? throw new InvalidOperationException();
     }
-
+    public IEnumerable<T> Find(Func<T, bool> predicate)
+    {
+        return _dbSet.AsNoTracking().AsEnumerable().Where(predicate).ToList();
+    }
+    
     public void Add(IEntity entity)
     {
         if (entity is T validEntity)

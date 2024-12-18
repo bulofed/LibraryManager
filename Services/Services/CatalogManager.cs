@@ -11,7 +11,7 @@ namespace Services.Services
             return bookRepository.GetAll();
         }
 
-        public IEnumerable<Book> GetCatalog(TypeLivre type)
+        public IEnumerable<Book> GetCatalog(TypeBook type)
         {
             var bookList = new List<Book>();
             foreach (var book in bookRepository.GetAll())

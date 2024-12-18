@@ -1,4 +1,5 @@
 using BusinessObjects.Entity;
+using BusinessObjects.Enum;
 using DataAccessLayer.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +17,16 @@ namespace LibraryManager.Hosting
         {
             try
             {
-                var books = _bookRepository.GetAll();
+                var books = _bookRepository.GetAll().Select(
+                    book => new
+                    {
+                        book.Id,
+                        book.Name,
+                        book.Pages,
+                        Type = book.Type.ToString(),
+                        book.Rate,
+                    }
+                );
                 return Ok(books);
             }
             catch (Exception ex)
@@ -32,7 +42,15 @@ namespace LibraryManager.Hosting
             try
             {
                 var book = _bookRepository.Get(id);
-                return Ok(book);
+                var result = new
+                {
+                    book.Id,
+                    book.Name,
+                    book.Pages,
+                    Type = book.Type.ToString(),
+                    book.Rate,
+                };
+                return Ok(result);
             }
             catch (InvalidOperationException)
             {
@@ -43,21 +61,49 @@ namespace LibraryManager.Hosting
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+        
+        // GET: /book/type/{type}
+        [HttpGet("book/type/{type}")]
+        public IActionResult GetBooksByType(TypeBook type)
+        {
+            try
+            {
+                var books = _bookRepository.Find(book => ((Book)book).Type == type);
+
+                if (!books.Any())
+                {
+                    return NotFound($"No books found with TypeLivre '{type}'.");
+                }
+
+                return Ok(books);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
 
         // GET: /book/add
         [HttpGet("book/add")]
-        public IActionResult AddBook([FromQuery] string name)
+        public IActionResult AddBook(
+            [FromQuery] string name, 
+            [FromQuery] int pages, 
+            [FromQuery] TypeBook type, 
+            [FromQuery] int rate)
         {
             try
             {
                 var newBook = new Book
                 {
-                    Name = name
+                    Name = name,
+                    Pages = pages,
+                    Type = type,
+                    Rate = rate
                 };
 
                 _bookRepository.Add(newBook);
 
-                return Ok($"Book '{name}' added successfully.");
+                return Ok($"Book '{name}' added successfully with {pages} pages, type '{type}', and rate {rate}.");
             }
             catch (Exception ex)
             {

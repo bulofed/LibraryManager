@@ -1,9 +1,11 @@
 namespace BusinessObjects.Enum
 {
-    public enum TypeLivre
+    public enum TypeBook
     {
         Aventure,
         Enseignement,
+        Histoire,
+        Juridique,
         Roman,
         Essai,
     }

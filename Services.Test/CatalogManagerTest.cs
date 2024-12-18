@@ -26,8 +26,8 @@ namespace Services.Test
             // Arrange
             var books = new List<Book>
             {
-                new Book { Id = 1, Name = "Book 1", Type = TypeLivre.Roman },
-                new Book { Id = 2, Name = "Book 2", Type = TypeLivre.Essai }
+                new Book { Id = 1, Name = "Book 1", Type = TypeBook.Roman },
+                new Book { Id = 2, Name = "Book 2", Type = TypeBook.Essai }
             };
             _mockBookRepository.Setup(repo => repo.GetAll()).Returns(books);
 
@@ -46,18 +46,18 @@ namespace Services.Test
             // Arrange
             var books = new List<Book>
             {
-                new Book { Id = 1, Name = "Book 1", Type = TypeLivre.Roman },
-                new Book { Id = 2, Name = "Book 2", Type = TypeLivre.Essai },
-                new Book { Id = 3, Name = "Book 3", Type = TypeLivre.Roman }
+                new Book { Id = 1, Name = "Book 1", Type = TypeBook.Roman },
+                new Book { Id = 2, Name = "Book 2", Type = TypeBook.Essai },
+                new Book { Id = 3, Name = "Book 3", Type = TypeBook.Roman }
             };
             _mockBookRepository.Setup(repo => repo.GetAll()).Returns(books);
 
             // Act
-            var result = _catalogManager.GetCatalog(TypeLivre.Roman);
+            var result = _catalogManager.GetCatalog(TypeBook.Roman);
 
             // Assert
             Assert.Equal(2, result.Count());
-            Assert.All(result!, b => Assert.Equal(TypeLivre.Roman, b.Type));
+            Assert.All(result!, b => Assert.Equal(TypeBook.Roman, b.Type));
         }
 
         [Fact]
@@ -66,8 +66,8 @@ namespace Services.Test
             // Arrange
             var books = new List<Book>
             {
-                new Book { Id = 1, Name = "Book 1", Type = TypeLivre.Roman },
-                new Book { Id = 2, Name = "Book 2", Type = TypeLivre.Essai }
+                new Book { Id = 1, Name = "Book 1", Type = TypeBook.Roman },
+                new Book { Id = 2, Name = "Book 2", Type = TypeBook.Essai }
             };
             _mockBookRepository.Setup(repo => repo.GetAll()).Returns(books);
 
@@ -86,8 +86,8 @@ namespace Services.Test
             // Arrange
             var books = new List<Book>
             {
-                new Book { Id = 1, Name = "Book 1", Type = TypeLivre.Roman },
-                new Book { Id = 2, Name = "Book 2", Type = TypeLivre.Essai }
+                new Book { Id = 1, Name = "Book 1", Type = TypeBook.Roman },
+                new Book { Id = 2, Name = "Book 2", Type = TypeBook.Essai }
             };
             _mockBookRepository.Setup(repo => repo.GetAll()).Returns(books);
 

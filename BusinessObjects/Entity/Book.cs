@@ -7,7 +7,7 @@ namespace BusinessObjects.Entity
         public int Id { get; set; }
         public required string Name { get; init; }
         public int Pages { get; init; }
-        public TypeLivre Type { get; init; }
+        public TypeBook Type { get; init; }
         public int Rate { get; init; }
     }
 }
