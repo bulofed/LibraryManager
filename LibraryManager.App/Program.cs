@@ -37,7 +37,7 @@ namespace LibraryManager.App
             var books = bookRepository.GetAll();
             foreach (var book in books)
             {
-                Console.WriteLine(book.Name);
+                Console.WriteLine(book.Author);
             }
         }
     }
