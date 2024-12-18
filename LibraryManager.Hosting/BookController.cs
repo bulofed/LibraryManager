@@ -62,33 +62,20 @@ namespace LibraryManager.Hosting
             }
         }
         
-        // GET: /books/type
-        [HttpGet("books/{type}")]
-        public IActionResult GetBooksByType(string type)
+        // GET: /book/type/{type}
+        [HttpGet("book/type/{type}")]
+        public IActionResult GetBooksByType(TypeBook type)
         {
             try
             {
-                if (!Enum.TryParse(typeof(TypeBook), type, true, out var typeEnum))
-                {
-                    return BadRequest($"Invalid TypeLivre '{type}'.");  
-                }
-                var books = _bookRepository.Find(book => ((Book)book).Type == (TypeBook)typeEnum);
+                var books = _bookRepository.Find(book => ((Book)book).Type == type);
 
                 if (!books.Any())
                 {
                     return NotFound($"No books found with TypeLivre '{type}'.");
                 }
 
-                var result = books.Select(book => new
-                {
-                    book.Id,
-                    book.Name,
-                    book.Pages,
-                    Type = book.Type.ToString(),
-                    book.Rate,
-                });
-                
-                return Ok(result);
+                return Ok(books);
             }
             catch (Exception ex)
             {
