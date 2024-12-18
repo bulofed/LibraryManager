@@ -10,32 +10,20 @@ namespace Services.Services
         {
             return bookRepository.GetAll();
         }
+        
+        public Book FindBook(int id)
+        {
+            return bookRepository.Get(id);
+        }
 
         public IEnumerable<Book> GetCatalog(TypeBook type)
         {
-            var bookList = new List<Book>();
-            foreach (var book in bookRepository.GetAll())
-            {
-                if (book.Type == type)
-                {
-                    bookList.Add(book);
-                }
-            }
-
-            return bookList;
+            return bookRepository.GetAll().Where(book => book.Type == type);
         }
-
-        public Book FindBook(int id)
+        
+        public void AddBook(Book book)
         {
-            foreach (var book in bookRepository.GetAll())
-            {
-                if (book.Id == id)
-                {
-                    return book;
-                }
-            }
-
-            return null;
+            bookRepository.Add(book);
         }
     }
 }

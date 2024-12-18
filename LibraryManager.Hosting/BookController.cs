@@ -1,23 +1,21 @@
 using BusinessObjects.Entity;
 using BusinessObjects.Enum;
-using DataAccessLayer.Repository;
+using Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManager.Hosting
 {
     [ApiController]
     [Route("[controller]")]
-    public class BookController(IGenericRepository<Book> bookRepository) : ControllerBase
+    public class BookController(CatalogManager catalogManager) : ControllerBase
     {
-        private readonly IGenericRepository<Book> _bookRepository = bookRepository ?? throw new ArgumentNullException(nameof(bookRepository));
-
         // GET: /books
         [HttpGet("books")]
         public IActionResult GetAllBooks()
         {
             try
             {
-                var books = _bookRepository.GetAll().Select(
+                var books = catalogManager.GetCatalog().Select(
                     book => new
                     {
                         book.Id,
@@ -41,7 +39,7 @@ namespace LibraryManager.Hosting
         {
             try
             {
-                var book = _bookRepository.Get(id);
+                var book = catalogManager.FindBook(id);
                 var result = new
                 {
                     book.Id,
@@ -72,7 +70,7 @@ namespace LibraryManager.Hosting
                 {
                     return BadRequest($"Invalid TypeLivre '{type}'.");  
                 }
-                var books = _bookRepository.Find(book => ((Book)book).Type == (TypeBook)typeEnum);
+                var books = catalogManager.GetCatalog((TypeBook)typeEnum);
 
                 if (!books.Any())
                 {
@@ -114,7 +112,7 @@ namespace LibraryManager.Hosting
                     Rate = rate
                 };
 
-                _bookRepository.Add(newBook);
+                catalogManager.AddBook(newBook);
 
                 return Ok($"Book '{name}' added successfully with {pages} pages, type '{type}', and rate {rate}.");
             }

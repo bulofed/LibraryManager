@@ -8,13 +8,13 @@ namespace Services.Test
 {
     public class CatalogManagerTest
     {
-        private readonly Mock<IGenericRepository<Book>> _mockBookRepository;
+        private readonly Mock<IGenericRepository<Book?>> _mockBookRepository;
         private readonly CatalogManager _catalogManager;
 
         public CatalogManagerTest()
         {
             // Création d’un Mock de IGenericRepository
-            _mockBookRepository = new Mock<IGenericRepository<Book>>();
+            _mockBookRepository = new Mock<IGenericRepository<Book?>>();
 
             // Initialisation de CatalogManager avec le Mock du Repository
             _catalogManager = new CatalogManager(_mockBookRepository.Object);

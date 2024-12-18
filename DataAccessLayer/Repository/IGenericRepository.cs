@@ -1,4 +1,5 @@
 using BusinessObjects;
+using BusinessObjects.Entity;
 
 namespace DataAccessLayer.Repository;
 

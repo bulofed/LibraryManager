@@ -1,6 +1,7 @@
 using DataAccessLayer.Contexts;
 using DataAccessLayer.Repository;
 using Microsoft.EntityFrameworkCore;
+using Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<LibraryContext>(options =>
     options.UseSqlite($"Data Source={databasePath}"));
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<CatalogManager>();
 
 var app = builder.Build();
 
