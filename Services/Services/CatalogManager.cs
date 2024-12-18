@@ -13,19 +13,19 @@ namespace Services.Services
 
         public IEnumerable<Book> GetCatalog(TypeLivre type)
         {
-            var booklist = new List<Book>();
+            var bookList = new List<Book>();
             foreach (var book in bookRepository.GetAll())
             {
                 if (book.Type == type)
                 {
-                    booklist.Add(book);
+                    bookList.Add(book);
                 }
             }
 
-            return booklist;
+            return bookList;
         }
 
-        public Book Findbook(int id)
+        public Book FindBook(int id)
         {
             foreach (var book in bookRepository.GetAll())
             {

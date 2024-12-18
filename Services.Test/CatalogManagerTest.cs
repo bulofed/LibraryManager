@@ -61,7 +61,7 @@ namespace Services.Test
         }
 
         [Fact]
-        public void Findbook_ShouldReturnBookById()
+        public void FindBook_ShouldReturnBookById()
         {
             // Arrange
             var books = new List<Book>
@@ -72,7 +72,7 @@ namespace Services.Test
             _mockBookRepository.Setup(repo => repo.GetAll()).Returns(books);
 
             // Act
-            var result = _catalogManager.Findbook(1);
+            var result = _catalogManager.FindBook(1);
 
             // Assert
             Assert.NotNull(result);
@@ -81,7 +81,7 @@ namespace Services.Test
         }
 
         [Fact]
-        public void Findbook_ShouldReturnNullIfBookNotFound()
+        public void FindBook_ShouldReturnNullIfBookNotFound()
         {
             // Arrange
             var books = new List<Book>
@@ -92,7 +92,7 @@ namespace Services.Test
             _mockBookRepository.Setup(repo => repo.GetAll()).Returns(books);
 
             // Act
-            var result = _catalogManager.Findbook(3);
+            var result = _catalogManager.FindBook(3);
 
             // Assert
             Assert.Null(result);
